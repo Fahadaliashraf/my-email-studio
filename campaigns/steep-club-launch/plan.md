@@ -218,3 +218,7 @@ The budget is small and the plan uses email only, so most of the cost is time.
 - Is 300 the firm target, or a stretch goal?
 - Do we want to A/B test subject lines on emails 1 and 6?
 - What happens to people who haven't joined after 3 January? (A later, gentler follow-up, or just our normal newsletter?)
+- Are these targets right for us? They are industry guesses, not our own data. The team must confirm them before we lock the targets:
+  - Open rate of 40% or more (section 7)
+  - Click rate of 5% or more (section 7)
+  - 120 subscriptions by the end of week 1, Sun 13 Dec (section 7)
