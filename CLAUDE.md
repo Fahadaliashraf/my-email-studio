@@ -17,4 +17,5 @@ This studio is for planning and writing email campaigns for a small business. We
 
 - **Write in plain English.** Use short sentences and everyday words. Avoid jargon.
 - **Never send email to real people.** Only write drafts. Do not send, schedule or forward any email to a real address, even as a test.
+- **Email format rules live in `.claude/rules/emails.md`.** This covers subject and preview length, the greeting, the one link, and the sign-off and footer. Read it when asked about email format.
 - **Ask me before deleting anything.** This includes files, folders, drafts and data in any connected tool.
