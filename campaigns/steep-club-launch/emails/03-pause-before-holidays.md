@@ -3,13 +3,13 @@ Preview: This week gets busy. Here's a small reminder to stop for a cup.
 
 Hi {{first_name}},
 
-This is a full week for most of us. Lists, plans, trips and wrapping paper.
+This is a full week for lots of us. Lists, plans and busy days.
 
 Before it all picks up, we hope you find a few minutes for yourself. Put the kettle on. Let the leaves steep. Hold the warm cup and just sit for a moment.
 
 That's what the Steep Club is about. A new loose-leaf tea each month, and a small reason to pause.
 
-Thinking of it as a gift? [How gifting works over Christmas. Only mention a delivery date if the team confirms a cut-off. If not, say the first box follows in the new year.]
+Thinking of it as a gift? [If the team confirms a Christmas cut-off: You can give the Steep Club until [cut-off date]. If not: You can give the Steep Club now, and the first box follows in the new year.]
 
 Whenever you're ready, the Steep Club is here.
 

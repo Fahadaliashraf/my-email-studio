@@ -29,7 +29,7 @@ We sound like a friend who knows a lot about tea but never shows off. We write s
 - **No health claims.** Never say detox, cleanse, boosts your immune system, helps you lose weight, burns fat, cures, prevents illness or reduces stress.
   - It's fine to say "a calm moment" or "a pause in your day". Never say the tea itself reduces stress.
 - **No claims we can't prove.** Never say best tea in the world, the finest or number one.
-- **No promises the team hasn't confirmed.** Don't promise delivery dates, prices, discounts or caffeine levels unless the team has confirmed them.
+- **No promises the team hasn't confirmed.** Don't promise delivery dates, prices, discounts, caffeine levels, what's in the box (including brewing guides and how much tea), gift options, or pause and cancel terms unless the team has confirmed them. Until then, put them in [square brackets].
 
 ## 5. How we sign off
 

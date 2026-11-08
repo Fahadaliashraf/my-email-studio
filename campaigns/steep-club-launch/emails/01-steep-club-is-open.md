@@ -5,7 +5,7 @@ Hi {{first_name}},
 
 Thank you for waiting with us. Today, the Steep Club opens its doors.
 
-Here's the idea. Each month, a box of loose-leaf tea arrives at your door. Inside is a new tea to try and simple notes on how to brew it. All you need is a kettle and a few quiet minutes.
+Here's the idea. Each month, a box of loose-leaf tea arrives at your door. Inside is a new tea to try [and a short brewing guide]. All you need is a kettle and a few quiet minutes.
 
 **How it works**
 
