@@ -9,5 +9,27 @@
   },
   "enabledPlugins": {
     "marketing@knowledge-work-plugins": true
+  },
+  "hooks": {
+    "PreToolUse": [
+      {
+        "matcher": "mcp__resend__.*",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "node \"$CLAUDE_PROJECT_DIR/.claude/hooks/send-guard.mjs\""
+          }
+        ]
+      },
+      {
+        "matcher": "mcp__claude_ai_Gmail__(send_message|reply|forward)",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "node \"$CLAUDE_PROJECT_DIR/.claude/hooks/send-guard.mjs\""
+          }
+        ]
+      }
+    ]
   }
 }
