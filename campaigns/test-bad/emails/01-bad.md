@@ -1,11 +1,11 @@
 Subject: Last chance to join the Steep Club
-Preview: Our tea helps you detox. Join before spots run out.
+Preview: A calm cup to start your day. Join before spots run out.
 
 Hi {{first_name}},
 
 The Steep Club is almost full. This is your last chance to get a box.
 
-Every cup of our tea helps you detox, so you feel lighter and fresher each morning.
+Every cup is a small pause in your morning, a chance to slow down before the day begins.
 
 [Join the Steep Club](https://kettlebird.example/steep-club)
 

@@ -8,20 +8,42 @@ import { resolve, dirname } from "node:path";
 import { fileURLToPath } from "node:url";
 
 const root = resolve(dirname(fileURLToPath(import.meta.url)), "..");
-const folder = process.argv[2];
-if (!folder) {
+const folderArg = process.argv[2];
+if (!folderArg) {
   console.error("Usage: node scripts/review.mjs <campaign-folder>");
   process.exit(2);
 }
+// Normalise so "campaigns/x", "campaigns\x" and "campaigns/x/" all match.
+const folder = folderArg.replace(/\\/g, "/").replace(/\/+$/, "");
 if (!existsSync(resolve(root, folder))) {
   console.error(`Folder not found: ${folder}`);
   process.exit(2);
 }
 
+const findingsPath = resolve(root, "review/findings.json");
+
 const schema = readFileSync(resolve(root, "review/findings.schema.json"), "utf8");
-const prompt =
+let prompt =
   `Review every email in ${folder} against brand/voice.md and .claude/rules/emails.md. ` +
   `Report only real problems.`;
+
+// If the last review was of this same folder, pass its findings in so this
+// review doesn't repeat problems that have already been fixed.
+let previous = null;
+if (existsSync(findingsPath)) {
+  try {
+    const saved = JSON.parse(readFileSync(findingsPath, "utf8"));
+    if (saved.folder === folder && Array.isArray(saved.findings)) previous = saved.findings;
+  } catch {
+    // Unreadable file: treat it as no earlier review.
+  }
+}
+if (previous && previous.length > 0) {
+  prompt +=
+    "\n\nThese are findings from the last review. Report only problems that are new or still not fixed. " +
+    "Don't repeat ones that have been fixed.\n\n" +
+    JSON.stringify(previous, null, 2);
+}
 
 const result = spawnSync(
   process.env.CLAUDE_BIN || "claude",
@@ -59,13 +81,15 @@ if (!output || !Array.isArray(output.findings)) {
   process.exit(2);
 }
 
-writeFileSync(resolve(root, "review/findings.json"), JSON.stringify(output, null, 2) + "\n");
+writeFileSync(findingsPath, JSON.stringify({ folder, findings: output.findings }, null, 2) + "\n");
 
 const count = { high: 0, medium: 0, low: 0 };
 for (const f of output.findings) count[f.severity] = (count[f.severity] || 0) + 1;
 console.log(
   `Reviewed ${folder}: ${output.findings.length} finding(s) ` +
-  `(${count.high} high, ${count.medium} medium, ${count.low} low). Saved to review/findings.json.`
+  `(${count.high} high, ${count.medium} medium, ${count.low} low)` +
+  (previous ? `, checked against ${previous.length} earlier finding(s)` : "") +
+  `. Saved to review/findings.json.`
 );
 
 process.exit(count.high > 0 ? 1 : 0);

@@ -1,3 +1,33 @@
 {
-  "findings": []
+  "folder": "campaigns/test-bad",
+  "findings": [
+    {
+      "file": "campaigns/test-bad/emails/01-bad.md",
+      "line": 1,
+      "severity": "high",
+      "problem": "Still not fixed. The subject uses 'Last chance', which brand/voice.md section 3 bans as pushy wording. It goes against the calm, warm voice.",
+      "fix": "Use a warm, calm subject, e.g. 'Subject: Your place in the Steep Club is ready'."
+    },
+    {
+      "file": "campaigns/test-bad/emails/01-bad.md",
+      "line": 6,
+      "severity": "high",
+      "problem": "Still not fixed. 'This is your last chance' uses a banned phrase (brand/voice.md section 3). 'The Steep Club is almost full' creates false urgency and makes a claim the team hasn't confirmed. Section 4 says unconfirmed details must go in [square brackets] or be left out.",
+      "fix": "Remove the urgency, e.g. 'The Steep Club is open, and we'd love you to join us.' If spaces really are limited, say so only once the team confirms it, and put the number in [square brackets] until then."
+    },
+    {
+      "file": "campaigns/test-bad/emails/01-bad.md",
+      "line": 2,
+      "severity": "medium",
+      "problem": "Partly fixed. The detox claim is gone, but 'Join before spots run out' is still there. It pushes the reader with scarcity the team hasn't confirmed, which breaks the calm, never-pushy voice in brand/voice.md sections 1 and 4.",
+      "fix": "Drop the urgency, e.g. 'Preview: A calm cup to start your day, delivered each month.'"
+    },
+    {
+      "file": "campaigns/test-bad/emails/01-bad.md",
+      "line": 12,
+      "severity": "medium",
+      "problem": "Still not fixed. There is a second link in the body ('Read about our teas' to https://kettlebird.example/teas). .claude/rules/emails.md section 3 allows exactly one main link and no other links in the body.",
+      "fix": "Delete line 12 and keep only the single [Join the Steep Club](https://kettlebird.example/steep-club) link."
+    }
+  ]
 }
