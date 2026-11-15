@@ -1,4 +1,4 @@
-Subject: The Steep Club is open
+Subject: Your daily pause starts here
 Preview: A new loose-leaf tea at your door each month, and a reason to pause.
 
 Hi {{first_name}},
