@@ -1,9 +1,11 @@
-# Reviews the Steep Club launch emails on every pull request.
-# campaigns/test-bad is skipped on purpose: it is built to fail.
+# Reviews the Steep Club launch emails on every pull request to master.
+# campaigns/test-bad is never reviewed here: it is built to fail.
+# If the ANTHROPIC_API_KEY secret is not set, the review is skipped, not failed.
 name: Email review
 
 on:
   pull_request:
+    branches: [master]
 
 permissions:
   contents: read
@@ -12,25 +14,36 @@ jobs:
   review:
     runs-on: ubuntu-latest
     timeout-minutes: 15
+    env:
+      HAS_API_KEY: ${{ secrets.ANTHROPIC_API_KEY != '' }}
     steps:
+      - name: Skip if no API key
+        if: env.HAS_API_KEY != 'true'
+        run: |
+          echo "::notice title=Email review skipped::The ANTHROPIC_API_KEY repository secret is not set, so the review did not run. Add it under Settings > Secrets and variables > Actions."
+
       - name: Check out the repo
+        if: env.HAS_API_KEY == 'true'
         uses: actions/checkout@v4
 
       - name: Install Node
+        if: env.HAS_API_KEY == 'true'
         uses: actions/setup-node@v4
         with:
-          node-version: 20
+          node-version: 22
 
       - name: Install Claude Code
+        if: env.HAS_API_KEY == 'true'
         run: npm install -g @anthropic-ai/claude-code
 
       - name: Review campaigns/steep-club-launch
+        if: env.HAS_API_KEY == 'true'
         env:
           ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
         run: node scripts/review.mjs campaigns/steep-club-launch
 
       - name: Save the findings
-        if: always()
+        if: always() && env.HAS_API_KEY == 'true'
         uses: actions/upload-artifact@v4
         with:
           name: review-findings
