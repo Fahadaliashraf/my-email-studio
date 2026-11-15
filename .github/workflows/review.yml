@@ -1,0 +1,38 @@
+# Reviews the Steep Club launch emails on every pull request.
+# campaigns/test-bad is skipped on purpose: it is built to fail.
+name: Email review
+
+on:
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  review:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - name: Check out the repo
+        uses: actions/checkout@v4
+
+      - name: Install Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Install Claude Code
+        run: npm install -g @anthropic-ai/claude-code
+
+      - name: Review campaigns/steep-club-launch
+        env:
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+        run: node scripts/review.mjs campaigns/steep-club-launch
+
+      - name: Save the findings
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: review-findings
+          path: review/findings.json
+          if-no-files-found: ignore
