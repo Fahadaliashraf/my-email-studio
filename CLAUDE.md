@@ -17,5 +17,6 @@ This studio is for planning and writing email campaigns for a small business. We
 
 - **Write in plain English.** Use short sentences and everyday words. Avoid jargon.
 - **Never send email to real people.** Only write drafts. Do not send, schedule or forward any email to a real address, even as a test.
+  - **The one exception is Resend.** Sending through Resend is allowed only to Resend's test addresses (ending in `@resend.dev`) and to my own address (the MY_EMAIL value in .claude/settings.local.json). Never send through Resend to anyone else. A guard will enforce this in the next step.
 - **Email format rules live in `.claude/rules/emails.md`.** This covers subject and preview length, the greeting, the one link, and the sign-off and footer. Read it when asked about email format.
 - **Ask me before deleting anything.** This includes files, folders, drafts and data in any connected tool.
